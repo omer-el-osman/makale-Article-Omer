@@ -1,0 +1,78 @@
+﻿@model makaledeneme1.CoreVeiw.AuthorPostVeiw
+
+@inject makaledeneme1.Data.IDataHelper<makaledeneme1.Core.Category> datahelper;
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+
+
+<h1>Create</h1>
+
+<h4 style="font-family:Arial, Helvetica, sans-serif">AuthorPost</h4>
+<hr />
+<div class="row"style="font-family:Arial, Helvetica, sans-serif">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           <div class="form-group" style="margin-bottom:10px;">
+                <label asp-for="PostCategory" class="control-label"></label>
+                @{
+                    List<string> My = new List<string>();
+                    foreach (var i in datahelper.getAllData())
+                    {
+                        My.Add(i.Name);
+                        //<p>@My</p>
+                    }
+                  
+                        <select asp-for="PostCategory" class="form-control" >
+                         @for(int x=0;x<My.Count();x++){
+                        //<p>@My[x]</p>
+                        //string s = My[x];
+                        <option></option>
+                        <option value="@My[x]">@My[x]</option>
+                          }
+                        </select>
+                }
+
+                <span asp-validation-for="PostCategory" class="text-danger"></span>
+            </div>
+            <br /> 
+           
+            <div class="form-group" style="margin-top:10px;">
+                <label asp-for="PostTitle" class="control-label" ></label>
+                <input asp-for="PostTitle" class="form-control" />
+                <span asp-validation-for="PostTitle" class="text-danger"></span>
+            </div>
+          
+            <br />
+            <div class="form-group">
+                <label asp-for="PostDescriptoin" class="control-label"></label>
+                <textarea asp-for="PostDescriptoin" class="form-control"></textarea>
+                <span asp-validation-for="PostDescriptoin" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="PostImgeUrl" class="control-label"></label>
+                <input asp-for="PostImgeUrl" type="file" class="form-control" />
+                <span asp-validation-for="PostImgeUrl" class="text-danger"></span>
+            </div>
+        
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

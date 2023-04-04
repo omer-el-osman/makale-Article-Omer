@@ -1,0 +1,97 @@
+﻿@model makaledeneme1.CoreVeiw.AuthorPostVeiw
+@inject makaledeneme1.Data.IDataHelper<makaledeneme1.Core.Category> datahelper;
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>AuthorPost</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+          @*  <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>*@
+         @*   <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="PostCategory" class="control-label"></label>
+                @{
+                    List<string> My = new List<string>();
+                    foreach (var i in datahelper.getAllData())
+                    {
+                        My.Add(i.Name);
+                        //<p>@My</p>
+                    }
+
+                    <select asp-for="PostCategory" class="form-control">
+                        @for (int x = 0; x < My.Count(); x++)
+                        {
+                            //<p>@My[x]</p>
+                            //string s = My[x];
+                            <option></option>
+                            <option value="@My[x]">@My[x]</option>
+                        }
+                    </select>
+                }
+                <span asp-validation-for="PostCategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostTitle" class="control-label"></label>
+                <input asp-for="PostTitle" class="form-control" />
+                <span asp-validation-for="PostTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostDescriptoin" class="control-label"></label>
+                <textarea asp-for="PostDescriptoin" class="form-control"></textarea>
+                <span asp-validation-for="PostDescriptoin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostImgeUrl" class="control-label"></label>
+                <input asp-for="PostImgeUrl" type="file" class="form-control" />
+                <span asp-validation-for="PostImgeUrl" class="text-danger"></span>
+            </div>
+           @* <div class="form-group">
+                <label asp-for="AddedDAte" class="control-label"></label>
+                <input asp-for="AddedDAte" class="form-control" />
+                <span asp-validation-for="AddedDAte" class="text-danger"></span>
+            </div>*@
+          @*  <div class="form-group">
+                <label asp-for="AuthorId" class="control-label"></label>
+                <select asp-for="AuthorId" class="form-control" asp-items="ViewBag.AuthorId"></select>
+                <span asp-validation-for="AuthorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,81 @@
+﻿@model makaledeneme1.CoreVeiw.AuthorView
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_LayoutAdmin.cshtml";
+    var result = AuthorizationService.AuthorizeAsync(User, "Admin");
+}
+
+<h1>Edit</h1>
+
+<h4>Author</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                 <label asp-for="UserId" class="control-label"></label>
+
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProtfileImgeUrl" class="control-label"></label>
+                <input asp-for="ProtfileImgeUrl" type="file" class="form-control" />
+                <span asp-validation-for="ProtfileImgeUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bio" class="control-label"></label>
+                <input asp-for="Bio" class="form-control" />
+                <span asp-validation-for="Bio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facebook" class="control-label"></label>
+                <input asp-for="Facebook" class="form-control" />
+                <span asp-validation-for="Facebook" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="instagram" class="control-label"></label>
+                <input asp-for="instagram" class="form-control" />
+                <span asp-validation-for="instagram" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="twitter" class="control-label"></label>
+                <input asp-for="twitter" class="form-control" />
+                <span asp-validation-for="twitter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@{
+    
+    if(result.Result.Succeeded){
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    }
+
+}
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

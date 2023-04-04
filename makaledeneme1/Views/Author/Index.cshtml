@@ -1,0 +1,95 @@
+﻿@model IEnumerable<makaledeneme1.Core.Author>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1 style="font-family:Arial, Helvetica, sans-serif">yaynici bilgileri</h1>
+
+<form method="get" asp-action="search">
+    <input type="search" name="searchItem" class="search-field" />
+    <input type="submit" value="Search" class="btn-primary" />
+</form>
+<table class="table table-primary" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+			</th>
+            <th>
+                
+                @Html.DisplayNameFor(model => model.ProtfileImgeUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Facebook)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.instagram)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.twitter)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+               
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+				<td>
+
+				
+					<img src="~/imges/@item.ProtfileImgeUrl" class="rounded-circle" width="40" height="40" />
+               </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Facebook)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.instagram)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.twitter)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@{
+    if(Model.ToList().Count<5)
+    {
+        int id = 0;
+        <a asp-action="Index" asp-route-id="@id">birinci Sayfa</a>
+
+    }
+    else
+    {
+        <a asp-action="Index" asp-route-id="@Model.ToList().Last().Id">Sonraki</a>
+
+    }
+}
