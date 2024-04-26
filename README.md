@@ -1,4 +1,11 @@
-Bu projede kullanıcılar giriş yaptıktan sonra makaleler yayınlanmakta ve ardından kullanıcılar tüm makalelerin bulunduğu ana sayfada görünmekte ve burada makale türüne göre herhangi bir makaleyi arayabilmektedir. Ayrıca makaleye tıklandığında sayfa tamamen açılmaktadır. okuyabilmeleri için ayrıca makale yayınlayan kişiler için bir sayfa vardır ve kullanıcı, herhangi bir kişiyi kişinin adına veya bu yayıncıyla ilgili herhangi bir şeye göre arayabilir. Ayrıca yönetici ve kullanıcı için bir kontrol paneli vardır. Kullanıcının yalnızca kişisel sayfasını düzenlediği, makaleler yayınladığı ve yalnızca yayınladığı makaleleri düzenlediği yöneticiye gelince, makale türünü ve Makaleleri yayınlamayı ekleyebilir, tüm makaleleri görebilir, üzerinde çalışabilir ve ayrıca tüm kullanıcıları görebilir. , hesaplarını değiştirmek ve silmek ve ayrıca kişisel profillerini düzeltebilir.
+
+Bu projede kullancılar sisteme girdikten sonra yayınlanan makaleleri ana sayfada görmektelerdir. Bunun yanı sıra yayınlanmış makaleleri kategorisine  veya ismine göre aratabilmektedirler.
+Makale yayınlayan kişiler için bir sayfa bulunmaktadır  ve kullanıcı aramak istediği kişiyi kişinin adıyla  veya  sosyal medya hesabıyla  arayabilir.
+Ayrıca yönetici ve kullanıcılar için  bir kontrol paneli bulunmaktadır. Kullanıcı paneli kullanıcının yalnızca kişisel sayfasını düzenlediği,
+makaleler yayınladığı ve yayınladığı makaleleri düzenlediği  sayfadır. Yönetici panelinde ise yönetici , makale
+türlerini  ve  makaleleri  ekleyebilir,  görebilir, üzerinde çalışabilir ve
+tüm kullanıcıları görebilir. Kullanıcı hesapları üzerinde değişiklik yapabilir .
+
 ![Screenshot 2024-04-26 090317](https://github.com/omer-el-osman/makale-Article-Omer/assets/104498125/cc3712ae-29bb-40d1-a038-b55fdbd1c237)
 ![image](https://github.com/omer-el-osman/makale-Article-Omer/assets/104498125/0db6b3d4-825b-406d-9d84-4902340f4c9d)
 ![image](https://github.com/omer-el-osman/makale-Article-Omer/assets/104498125/9c42688f-8eec-422d-9531-eb2d40f89372)
